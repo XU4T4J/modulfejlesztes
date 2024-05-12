@@ -16,7 +16,13 @@ CREATE TABLE {databaseOwner}{objectQualifier}Kerdesek_Items
     (
     Id int NOT NULL IDENTITY (1, 1),
     Kerdesek nvarchar(MAX) NOT NULL,
-    Valaszok nvarchar(MAX) NOT NULL
+    Valaszok nvarchar(MAX) NOT NULL,
+    AssignedUserId INT,
+    ModuleId INT,
+    CreatedByUserId INT,
+    LastModifiedByUserId INT,
+    CreatedOnDate DATETIME,
+    LastModifiedOnDate DATETIME
     )  ON [PRIMARY]
      TEXTIMAGE_ON [PRIMARY]
 GO
