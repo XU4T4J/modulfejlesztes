@@ -12,11 +12,11 @@
         </h2>
         <fieldset>
             <div class="dnnFormItem">
-                <div><label for="itemName">@Dnn.LocalizeString("lblName")</label></div>
+                <div><label for="itemName">Kérdés:</label></div>
                 @Html.TextBoxFor(m => m.ItemName)
             </div>
             <div class="dnnFormItem">
-                <div><label for="itemDescription">@Dnn.LocalizeString("lblDescription")</label></div>
+                <div><label for="itemDescription">Válasz</label></div>
                 @Html.TextArea("itemDescription", Model.ItemDescription)
             </div>
             <div class="dnnFormItem">
