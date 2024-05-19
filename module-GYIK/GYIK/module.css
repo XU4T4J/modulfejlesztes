@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.qbox {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+.question {
+    background-color: #f9f9f9; /* Világosabb szürke háttérszín */
+    border-radius: 10px; /* Lekerekített sarkok */
+    margin-bottom: 15px;
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Átmenet a háttérszín változásához */
+}
+
+    .question:hover {
+        background-color: #e0e0e0; /* Világosabb háttérszín az egér fölött */
+        box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Könnyû árnyék az egér fölött */
+    }
+
+.answer {
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.question:hover .answer {
+    background-color: #e0e0e0; /* Szürke háttérszín a válaszoknak, amikor az egér a kérdés fölé van helyezve */
+}
+
+.show {
+    display: block;
+}
