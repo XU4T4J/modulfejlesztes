@@ -15,18 +15,19 @@
                 <div><label for="itemName">Kérdés:</label></div>
                 @Html.TextBoxFor(m => m.ItemName)
             </div>
-            <div class="dnnFormItem">
-                <div><label for="itemDescription">Válasz</label></div>
-                @Html.TextArea("itemDescription", Model.ItemDescription)
-            </div>
 			<div class="dnnFormItem">
-				<div><label for="itemUser">Kérdés fontossága:</label></div>
+				<div><label for="itemDescription">Válasz</label></div>
+				@Html.TextBoxFor(m => m.ItemDescription)
+			</div>
+			<div class="dnnFormItem">
+				<div><label for="itemUser">Háttérszín:</label></div>
 				@*<div><label for="itemUser">@Dnn.LocalizeString("lblAssignedUser")</label></div>*@
 				@Html.DropDownListFor(m => m.AssignedUserId, new List<SelectListItem> {
-	                new SelectListItem { Text = "1", Value = "1" },
-	                new SelectListItem { Text = "2", Value = "2" },
-	                new SelectListItem { Text = "3", Value = "3" }
-                }, "Choose...")
+                    new SelectListItem { Text = "Kék", Value = "1" },
+                    new SelectListItem { Text = "Zöld", Value = "2" },
+                    new SelectListItem { Text = "Piros", Value = "3" },
+                    new SelectListItem { Text = "Sárga", Value = "4" }
+                }, "Válassz...")
 
 
 			</div>

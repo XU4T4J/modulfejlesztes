@@ -17,7 +17,6 @@
 	}
 
 	.question {
-		background-color: lightblue; /* Világosabb szürke háttérszín */
 		border-radius: 10px; /* Lekerekített sarkok */
 		margin-bottom: 15px;
 		padding: 15px;
@@ -25,10 +24,6 @@
 		transition: background-color 0.3s ease; /* Átmenet a háttérszín változásához */
 	}
 
-	.question:hover {
-		background-color: #e0e0e0; /* Világosabb háttérszín az egér fölött */
-		box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Könnyű árnyék az egér fölött */
-	}
 
 	.answer {
 		display: none;
@@ -37,21 +32,43 @@
 		margin-top: 10px;
 	}
 
-	.question:hover .answer {
-		background-color: #e0e0e0; /* Szürke háttérszín a válaszoknak, amikor az egér a kérdés fölé van helyezve */
-	}
+
 
 	.show {
 		display: block;
 	}
 
 	.red-bg{
-		background-color: yellow !important;
+		background-color: lightcoral !important;
+	}
+
+	.red-bg:hover .answer {
+		background-color: lightcoral !important;
 	}
 
 	.green-bg{
-		background-color: green !important;
+		background-color: lightgreen !important;
 	}
+
+	.green-bg:hover .answer{
+		background-color: lightgreen !important;
+	}
+
+	.yellow-bg {
+		background-color: lightgoldenrodyellow !important;
+	}
+
+	.yellow-bg:hover .answer {
+		background-color: lightgoldenrodyellow !important;
+	}
+
+	.blue-bg {
+		background-color: lightblue !important;
+	}
+
+		.yellow-bg:hover .answer {
+			background-color: lightblue !important;
+		}
 </style>
 
 <p id="Items-@Dnn.ModuleContext.ModuleId">
@@ -61,72 +78,83 @@
     }
     else
     {
-		<p>Zöld = Nem kérdezik sokan, de fontos lehet</p>
-		<p>Kék = Szokták kérdezni és fontos</p>
-		<p>sárga = nagyon gyakran kérdezik és nagyon fontos</p>
+<div class="qbox">
 
-			<div class="qbox">
-
-				@foreach (var item in Model)
-				{
-					if (item.AssignedUserId == 1)
-					{
-						<div class="question green-bg">
-							<h3> @item.ItemName</h3>
-							<div class="answer">
-								<p>@item.ItemDescription</p>
-							</div>
-						</div>
-
-						if (Dnn.ModuleContext.IsEditable)
-						{
-							<div>
-								<a href="@Url.Action("Edit", "Item", new {ctl = "Edit", itemId = item.ItemId})">@Dnn.LocalizeString("EditItem")</a>
-								<a href="@Url.Action("Delete", "Item", new {itemId = item.ItemId})">@Dnn.LocalizeString("DeleteItem")</a>
-							</div>
-						}
-					}
-
-					if (item.AssignedUserId == 2)
-					{
-						<div class="question">
-							<h3> @item.ItemName</h3>
-							<div class="answer">
-								<p>@item.ItemDescription</p>
-							</div>
-						</div>
-
-						if (Dnn.ModuleContext.IsEditable)
-						{
-							<div>
-								<a href="@Url.Action("Edit", "Item", new {ctl = "Edit", itemId = item.ItemId})">@Dnn.LocalizeString("EditItem")</a>
-								<a href="@Url.Action("Delete", "Item", new {itemId = item.ItemId})">@Dnn.LocalizeString("DeleteItem")</a>
-							</div>
-						}
-					}
-
-					if (item.AssignedUserId == 3)
-					{
-						<div class="question red-bg">
-							<h3> @item.ItemName</h3>
-							<div class="answer">
-								<p>@item.ItemDescription</p>
-							</div>
-						</div>
-
-						if (Dnn.ModuleContext.IsEditable)
-						{
-							<div>
-								<a href="@Url.Action("Edit", "Item", new {ctl = "Edit", itemId = item.ItemId})">@Dnn.LocalizeString("EditItem")</a>
-								<a href="@Url.Action("Delete", "Item", new {itemId = item.ItemId})">@Dnn.LocalizeString("DeleteItem")</a>
-							</div>
-						}
-					}
-
-
-				}
-
+	@foreach (var item in Model)
+	{
+		if (item.AssignedUserId == 2)
+		{
+			<div class="question green-bg">
+				<h3> @item.ItemName</h3>
+				<div class="answer">
+					<p>@item.ItemDescription</p>
+				</div>
 			</div>
+
+			if (Dnn.ModuleContext.IsEditable)
+			{
+				<div>
+					<a href="@Url.Action("Edit", "Item", new {ctl = "Edit", itemId = item.ItemId})">@Dnn.LocalizeString("EditItem")</a>
+					<a href="@Url.Action("Delete", "Item", new {itemId = item.ItemId})">@Dnn.LocalizeString("DeleteItem")</a>
+				</div>
+			}
+		}
+		else if (item.AssignedUserId == 3)
+		{
+			<div class="question red-bg">
+				<h3> @item.ItemName</h3>
+				<div class="answer">
+					<p>@item.ItemDescription</p>
+				</div>
+			</div>
+
+			if (Dnn.ModuleContext.IsEditable)
+			{
+				<div>
+					<a href="@Url.Action("Edit", "Item", new {ctl = "Edit", itemId = item.ItemId})">@Dnn.LocalizeString("EditItem")</a>
+					<a href="@Url.Action("Delete", "Item", new {itemId = item.ItemId})">@Dnn.LocalizeString("DeleteItem")</a>
+				</div>
+			}
+		}
+		else if (item.AssignedUserId == 4)
+		{
+			<div class="question yellow-bg">
+				<h3> @item.ItemName</h3>
+				<div class="answer">
+					<p>@item.ItemDescription</p>
+				</div>
+			</div>
+
+			if (Dnn.ModuleContext.IsEditable)
+			{
+				<div>
+					<a href="@Url.Action("Edit", "Item", new {ctl = "Edit", itemId = item.ItemId})">@Dnn.LocalizeString("EditItem")</a>
+					<a href="@Url.Action("Delete", "Item", new {itemId = item.ItemId})">@Dnn.LocalizeString("DeleteItem")</a>
+				</div>
+			}
+		}
+		else
+		{
+			<div class="question blue-bg">
+				<h3> @item.ItemName</h3>
+				<div class="answer">
+					<p>@item.ItemDescription</p>
+				</div>
+			</div>
+
+			if (Dnn.ModuleContext.IsEditable)
+			{
+				<div>
+					<a href="@Url.Action("Edit", "Item", new {ctl = "Edit", itemId = item.ItemId})">@Dnn.LocalizeString("EditItem")</a>
+					<a href="@Url.Action("Delete", "Item", new {itemId = item.ItemId})">@Dnn.LocalizeString("DeleteItem")</a>
+				</div>
+			}
+		}
+
+
+	}
+
+</div>
 
     }
 </div>
