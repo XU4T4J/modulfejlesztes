@@ -22,7 +22,13 @@
 			<div class="dnnFormItem">
 				<div><label for="itemUser">Kérdés fontossága:</label></div>
 				@*<div><label for="itemUser">@Dnn.LocalizeString("lblAssignedUser")</label></div>*@
-		        @Html.DropDownListFor(m => m.AssignedUserId, (IEnumerable<SelectListItem>)ViewBag.Users, "1; 2")
+				@Html.DropDownListFor(m => m.AssignedUserId, new List<SelectListItem> {
+	                new SelectListItem { Text = "1", Value = "1" },
+	                new SelectListItem { Text = "2", Value = "2" },
+	                new SelectListItem { Text = "3", Value = "3" }
+                }, "Choose...")
+
+
 			</div>
             @Html.HiddenFor(m => m.ModuleId)
         </fieldset>
